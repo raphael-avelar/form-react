@@ -1,47 +1,28 @@
-import React from 'react'
-import { ButtonType } from '../constants/button-types'
+import ButtonType from './types'
 
-interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  variant: ButtonType
-  label: string
+const variants = {
+  [ButtonType.Success]: 'bg-purple-600 hover:bg-purple-700 border-purple-600 hover:border-purple-700 active:bg-opacity-80',
+  [ButtonType.Alert]: 'bg-yellow-500 hover:bg-yellow-600 border-yellow-500 hover:border-yellow-600 active:bg-opacity-80',
+  [ButtonType.Error]: 'bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 active:bg-opacity-60'
 }
 
-const Button: React.FC<Props> = (props: Props) => {
-  const { variant, label } = props
-  const commomClasses: string = "font-bold text-md text-white py-2 px-5 rounded-full "
+interface Props {
+  variant: ButtonType
+  label: string
+  onClick: () => void
+}
+
+const Button = ({variant, label, ...props}: Props) => {
+  const variantClasses = variants[variant]
 
   return (
-    <>
-      {variant === ButtonType.Success &&
-        <button
-          className={commomClasses + "bg-purple-600 hover:bg-purple-700 border-purple-600 hover:border-purple-700 active:bg-opacity-80"}
-          role={'button-' + ButtonType.Success}
-          {...props}
-        >
-          {label}
-        </button>
-      }
-
-      {variant === ButtonType.Alert &&
-        <button
-          className={commomClasses + "bg-yellow-500 hover:bg-yellow-600 border-yellow-500 hover:border-yellow-600 active:bg-opacity-80"}
-          role={'button-' + ButtonType.Alert}
-          {...props}
-        >
-          {label}
-        </button>
-      }
-
-      {variant === ButtonType.Erro &&
-        <button
-          className={commomClasses + "bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 active:bg-opacity-60"}
-          role={'button-' + ButtonType.Erro}
-          {...props}
-        >
-          {label}
-        </button>
-      }
-    </>
+    <button
+      className={`font-bold text-md text-white py-2 px-5 rounded-full ${variantClasses}`}
+      role="button"
+      {...props}
+    >
+      {label}
+    </button>
   )
 }
 
