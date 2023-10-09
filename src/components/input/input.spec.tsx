@@ -1,9 +1,10 @@
-import Input from "./input"
+import { Input } from "."
 import { render, screen, fireEvent } from '@testing-library/react'
-import { faker } from '@faker-js/faker'
+import Chance from 'chance'
+const chance = new Chance()
 
 const setup = () => {
-  const fieldName = faker.database.column()
+  const fieldName = chance.word()
   render(<Input name={fieldName} />)
 
   return { fieldName }
@@ -19,7 +20,7 @@ describe('Input Component', () => {
   test('Should update value', () => {
     const { fieldName } = setup()
     const input = screen.getByRole(fieldName) as HTMLInputElement
-    const randomWords = faker.lorem.words()
+    const randomWords = chance.sentence()
     fireEvent.input(input, { target: { value: randomWords } })
     expect(input.value).toBe(randomWords)
   })

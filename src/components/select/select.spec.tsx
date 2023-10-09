@@ -1,10 +1,11 @@
-import Select from "./select"
+import { Select } from "."
 import { render, screen, fireEvent } from '@testing-library/react'
-import { faker } from '@faker-js/faker'
+import Chance from 'chance'
+const chance = new Chance()
 
 const setup = () => {
-  const fieldName = faker.database.column()
-  const options: Array<string> = Array.from({ length: 5 }, () => faker.lorem.word())
+  const fieldName = chance.word()
+  const options: Array<string> = Array.from({ length: 5 }, () => chance.word())
   render(<Select name={fieldName} options={options} />)
 
   return { fieldName, options }
