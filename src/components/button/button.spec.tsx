@@ -6,9 +6,10 @@ const chance = new Chance()
 const setup = () => {
   const label = chance.word()
   const callAction = jest.fn()
+  const arg = chance.word()
 
-  render(<Button variant={ButtonType.Success} label={label} onClick={callAction} />)
-  return { callAction }
+  render(<Button variant={ButtonType.Success} label={label} onClick={callAction(arg)} />)
+  return { callAction, arg }
 }
 
 describe('Button Component', () => {
@@ -19,9 +20,10 @@ describe('Button Component', () => {
   })
 
   test('Should call on click', () => {
-    const { callAction } = setup()
+    const { callAction, arg } = setup()
     const button = screen.getByRole('button')
     button.click()
     expect(callAction).toHaveBeenCalledTimes(1)
+    expect(callAction).toHaveBeenCalledWith(arg)
   })
 })
