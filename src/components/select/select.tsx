@@ -1,12 +1,8 @@
-import React from 'react'
-
 interface Props extends React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
   options: Array<string>
 }
 
-const Select: React.FC<Props> = (props: Props) => {
-  const { options } = props
-
+const Select = ({options, ...props}: Props) => {
   return (
     <div className="inline-block relative w-64">
       <select
@@ -14,10 +10,10 @@ const Select: React.FC<Props> = (props: Props) => {
         role={props.name}
         {...props}
       >
-        {options.map((option, i) => (
+        {options.map((option, key) => (
           <option
-            key={i}
-            role={'option-' + props.name}
+            key={`option-${key}`}
+            role={`option-${props.name}`}
           >
             {option}
           </option>
