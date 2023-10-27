@@ -1,6 +1,7 @@
-import { Select } from "."
+import Select from "."
 import { render, screen, fireEvent } from '@testing-library/react'
 import Chance from 'chance'
+
 const chance = new Chance()
 
 const setup = () => {
