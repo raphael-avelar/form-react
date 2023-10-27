@@ -1,4 +1,4 @@
-export { Router } from './router'
-export { Button, ButtonType } from './button'
-export { Input } from './input'
-export { Select } from './select'
+export { default as Router } from './router'
+export { default as Button, ButtonType } from './button'
+export { default as Input } from './input'
+export { default as Select } from './select'
