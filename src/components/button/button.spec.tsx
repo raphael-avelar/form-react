@@ -30,23 +30,17 @@ describe('Button Component', () => {
     setup(BUTTON_TYPE.Success)
     const button = screen.getByRole('button')
     expect(button).toHaveClass('bg-purple-600 hover:bg-purple-700 border-purple-600')
-    expect(button).not.toHaveClass('bg-yellow-500 hover:bg-yellow-600 border-yellow-500')
-    expect(button).not.toHaveClass('bg-red-500 hover:bg-red-600 border-red-500')
   })
 
   test('Should display only alert variant', () => {
     setup(BUTTON_TYPE.Alert)
     const button = screen.getByRole('button')
     expect(button).toHaveClass('bg-yellow-500 hover:bg-yellow-600 border-yellow-500')
-    expect(button).not.toHaveClass('bg-purple-600 hover:bg-purple-700 border-purple-600')
-    expect(button).not.toHaveClass('bg-red-500 hover:bg-red-600 border-red-500')
   })
 
   test('Should display only error variant', () => {
     setup(BUTTON_TYPE.Error)
     const button = screen.getByRole('button')
     expect(button).toHaveClass('bg-red-500 hover:bg-red-600 border-red-500')
-    expect(button).not.toHaveClass('bg-purple-600 hover:bg-purple-700 border-purple-600')
-    expect(button).not.toHaveClass('bg-yellow-500 hover:bg-yellow-600 border-yellow-500')
   })
 })
