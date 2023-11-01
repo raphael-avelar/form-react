@@ -1,2 +1,2 @@
 export { default } from './button'
-export { default as ButtonType } from './types'
+export { default as BUTTON_TYPE } from './types'
