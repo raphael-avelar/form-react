@@ -5,10 +5,10 @@ import Chance from 'chance'
 const chance = new Chance()
 const label = chance.word()
 const callAction = jest.fn()
-const arg = chance.word()
+const param = chance.word()
 
 const setup = (BUTTON_TYPE: BUTTON_TYPE) => {
-  render(<Button variant={BUTTON_TYPE} label={label} onClick={callAction(arg)} />)
+  render(<Button variant={BUTTON_TYPE} label={label} onClick={callAction(param)} />)
 }
 
 describe('Button Component', () => {
@@ -17,7 +17,7 @@ describe('Button Component', () => {
     const button = screen.getByRole('button')
     button.click()
     expect(callAction).toHaveBeenCalledTimes(1)
-    expect(callAction).toHaveBeenCalledWith(arg)
+    expect(callAction).toHaveBeenCalledWith(param)
   })
 
   test('Should render correctly', () => {
