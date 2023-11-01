@@ -1,8 +1,8 @@
 interface Props {
   name: string
-  value: string
-  placeholder: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  value?: string
+  placeholder?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input = ({name, ...props}: Props) => {
