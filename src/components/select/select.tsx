@@ -1,8 +1,8 @@
 interface Props {
   name: string
-  value: string
+  value?: string
   options: Array<string>
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const Select = ({name, options, ...props}: Props) => {
