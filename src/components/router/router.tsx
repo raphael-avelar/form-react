@@ -1,8 +1,7 @@
-import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Form from '../../pages/form'
 
-const Router: React.FC = () => {
+const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
